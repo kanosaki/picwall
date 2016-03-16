@@ -53,6 +53,15 @@ gulp.task("build", function (done) {
   done();
 });
 
+gulp.task("sass", function () {
+  return gulp.src("src/**/*.{scss,sass}")
+    .pipe($.sourcemaps.init())
+    .pipe($.sass())
+    .on("error", $.sass.logError)
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('./dist'))
+});
+
 gulp.task("default", ["build"]);
 
 gulp.task("watch", ["default"], function () {
