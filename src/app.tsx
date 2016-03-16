@@ -13,7 +13,7 @@ export class AppProps {
 
 
 export class AppContainer extends React.Component<AppProps, AppStates> {
-    state:AppStates = {};
+    state: AppStates = {};
 
     render() {
         return (
