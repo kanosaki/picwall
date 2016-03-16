@@ -1,30 +1,26 @@
 var gulp = require('gulp'),
-  typescript = require('typescript'),
-  ts = require('gulp-typescript'),
-  sourcemaps = require('gulp-sourcemaps'),
-  browserify = require('browserify'),
+  $ = require('gulp-load-plugins')(),
   source = require('vinyl-source-stream'),
-  watch = require('gulp-watch'),
-  del = require('del')
-  ;
+  del = require('del');
 
-var project = ts.createProject('tsconfig.json', {typescript: typescript});
+var project = $.typescript.createProject('tsconfig.json', {typescript: require('typescript')});
 
 gulp.task('compile', function () {
   return gulp.src("src/**/*.{ts,tsx}")
-    .pipe(sourcemaps.init())
-    .pipe(ts(project))
+    .pipe($.sourcemaps.init())
+    .pipe($.typescript(project))
     .js
-    .pipe(sourcemaps.write())
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.'));
 });
 
 gulp.task('bundle', ['compile'], function () {
-  var b = browserify('.tmp/tsBundle.js');
-  return b.bundle()
-    .pipe(source('bundle.js'))
-    .pipe(gulp.dest('dist'))
-    ;
+  return gulp.src(['.tmp/tsBundle.js', 'src/**/*.js'])
+    .pipe($.browserify({
+      debug: true
+    }))
+    .pipe($.rename('bundle.js'))
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('clean', function (done) {
@@ -32,7 +28,7 @@ gulp.task('clean', function (done) {
 });
 
 gulp.task('watch', function () {
-  watch('src/**/*.{ts,tsx}', ['compile']);
+  $.watch('src/**/*.{ts,tsx}', ['bundle']);
 });
 
 gulp.task('default', ['watch']);
