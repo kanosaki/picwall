@@ -3,10 +3,9 @@ var gulp = require('gulp'),
   browserify = require('browserify'),
   watchify = require('watchify'),
   source = require('vinyl-source-stream'),
+  buffer = require('vinyl-buffer'),
   glob = require('glob'),
   del = require('del');
-
-var project = $.typescript.createProject('tsconfig.json', {typescript: require('typescript')});
 
 var paths = {
   srcFiles: glob.sync("./src/**/*.{ts,tsx,js}"),
@@ -23,8 +22,7 @@ function buildSrc(files, watch) {
     bundler = watchify(bundler);
   }
   function rebundle() {
-    var stream = bundler.bundle();
-    stream
+    return bundler.bundle()
       .on("error", function () {
         $.notify.onError({
           title: "Bundle error",
@@ -32,6 +30,13 @@ function buildSrc(files, watch) {
         })
       })
       .pipe(source('bundle.js'))
+      .pipe(buffer())
+      .pipe($.sourcemaps.init({loadMaps: true}))
+      .pipe($.uglify())
+      .pipe($.sourcemaps.write({
+        includeContent: false,
+        sourceRoot: '..'
+      }))
       .pipe(gulp.dest(paths.out));
   }
 
