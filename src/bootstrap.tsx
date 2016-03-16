@@ -4,18 +4,14 @@ import * as ReactDOM from "react-dom";
 import * as React from "react";
 import {AppContainer} from "./app";
 
-function bootstrap() {
+export function bootstrap() {
     let container = document.getElementById("container");
+    console.log("FOOBAR");
     ReactDOM.render(<AppContainer/>, container);
 }
 
-
-interface BrowserWindow extends Window {
-    bootstrap(): void;
-}
-
-declare var window: BrowserWindow;
-
-window.bootstrap = bootstrap;
-
+window.addEventListener("load", () => {
+    console.log("Initializing application...");
+    bootstrap();
+});
 
