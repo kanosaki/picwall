@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "umd",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "out": ".tmp/tsBundle.js",
+    "sourceMap": true,
+    "jsx": "react"
+  },
+  "excludes": [
+    "node_modules",
+    "dist",
+    ".tmp"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "picwall",
+  "version": "1.0.0",
+  "description": "A wall of pictures",
+  "main": "main.go",
+  "scripts": {
+    "test": "go test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "browserify": "^13.0.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.12.1",
+    "merge2": "^1.0.1",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-grid-layout": "^0.11.1",
+    "typescript": "^1.8.7",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "gulp-watch": "^4.3.5"
+  }
+}
