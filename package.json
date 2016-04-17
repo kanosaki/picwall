@@ -10,7 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "browserify": "^13.0.0",
+    "debug": "^2.2.0",
     "del": "^2.2.0",
+    "eventemitter3": "^1.2.0",
     "gulp": "^3.9.1",
     "gulp-browserify": "^0.5.1",
     "gulp-load-plugins": "^1.2.0",
@@ -21,18 +23,30 @@
     "gulp-typescript": "^2.12.1",
     "gulp-uglify": "^1.5.3",
     "gulp-util": "^3.0.7",
+    "lodash": "^4.6.1",
+    "material-design-icons": "^2.2.3",
+    "material-ui": "^0.15.0-alpha.2",
     "merge2": "^1.0.1",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
     "react-grid-layout": "^0.11.1",
+    "react-redux": "^4.4.1",
+    "react-tap-event-plugin": "^0.2.2",
+    "redux": "^3.3.1",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1",
+    "reflux": "^0.4.0",
     "requirejs": "^2.1.22",
+    "run-sequence": "^1.1.5",
     "tsify": "^0.14.1",
     "typescript": "^1.8.7",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
+    "gulp-concat-css": "^2.2.0",
     "gulp-watch": "^4.3.5"
   }
 }

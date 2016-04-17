@@ -12,5 +12,36 @@
       "include": true
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "react/react.d.ts": {
+      "ref": "cc3d223a946f661eff871787edeb0fcb8f0db156"
+    },
+    "react/react-dom.d.ts": {
+      "ref": "cc3d223a946f661eff871787edeb0fcb8f0db156"
+    },
+    "alt/alt.d.ts": {
+      "ref": "cc3d223a946f661eff871787edeb0fcb8f0db156"
+    },
+    "whatwg-fetch/whatwg-fetch.d.ts": {
+      "ref": "cc3d223a946f661eff871787edeb0fcb8f0db156"
+    },
+    "reflux/reflux.d.ts": {
+      "ref": "6766ed1d0faf02ede9e2edf2e66bbb2388c825ec"
+    },
+    "redux/redux.d.ts": {
+      "ref": "a44529fcb1e1cdc0355e71c42a6048de99b57c34"
+    },
+    "react-redux/react-redux.d.ts": {
+      "ref": "a44529fcb1e1cdc0355e71c42a6048de99b57c34"
+    },
+    "redux-logger/redux-logger.d.ts": {
+      "ref": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
+    },
+    "redux-thunk/redux-thunk.d.ts": {
+      "ref": "299b5caa22876ef27dc8e9a5b7fd7bf93457b6f4"
+    },
+    "material-ui/material-ui.d.ts": {
+      "ref": "ec9eb4b28c74665a602c22db3457f0a76fa0fa23"
+    }
+  }
 }

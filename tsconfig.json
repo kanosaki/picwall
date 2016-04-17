@@ -6,6 +6,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
+    "out": "./dist/bundle.js",
     "jsx": "react"
   },
   "excludes": [
