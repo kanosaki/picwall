@@ -5,15 +5,11 @@ import (
 	"net/http"
 	"fmt"
 	"os"
-	"github.com/gorilla/websocket"
 	"github.com/kanosaki/picwall/server"
 )
 
 func main() {
-	wsUpgrader := websocket.Upgrader{
-		ReadBufferSize: 1024,
-		WriteBufferSize: 1024,
-	}
+	app := server.NewApp()
 	devImagesDir := os.ExpandEnv("$IMAGES_DIR")
 	root := gin.Default()
 	root.LoadHTMLGlob("src/templates/*")
@@ -30,7 +26,7 @@ func main() {
 	// dev endpoints
 	devEp := root.Group("/dev")
 	{
-		devEp.GET("/ws", server.SinkHandler(wsUpgrader))
+		devEp.GET("/ws", server.SinkHandler(app))
 		devEp.Static("image", devImagesDir)
 	}
 

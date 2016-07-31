@@ -21,7 +21,8 @@ type SinkResponse struct {
 	Contents []model.PicItem `json:"contents"`
 }
 
-func SinkHandler(wsUpgrader websocket.Upgrader) gin.HandlerFunc {
+func SinkHandler(app *App) gin.HandlerFunc {
+	wsUpgrader := app.WebSocketUpgrader
 	return func(c *gin.Context) {
 		conn, err := wsUpgrader.Upgrade(c.Writer, c.Request, c.Writer.Header())
 		if err != nil {
