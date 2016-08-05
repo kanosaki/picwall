@@ -7,5 +7,3 @@ type Session struct {
 func (s *Session) Shutdown() {
 
 }
-
-

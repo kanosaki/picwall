@@ -2,9 +2,9 @@ package source
 
 import (
 	"container/list"
-	"io/ioutil"
 	"fmt"
 	"github.com/kanosaki/picwall/server/core"
+	"io/ioutil"
 )
 
 type DirectorySrouce struct {
@@ -15,8 +15,8 @@ type DirectorySrouce struct {
 
 func NewDirectorySource(path string) (*DirectorySrouce, error) {
 	ds := &DirectorySrouce{
-		path: path,
-		ch: make(core.Stream),
+		path:   path,
+		ch:     make(core.Stream),
 		buffer: list.New(),
 	}
 	files, err := ioutil.ReadDir(path)

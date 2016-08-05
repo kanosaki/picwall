@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
-	"net/http"
 	"fmt"
-	"os"
+	"github.com/gin-gonic/gin"
 	"github.com/kanosaki/picwall/server"
+	"net/http"
+	"os"
 )
 
 func main() {

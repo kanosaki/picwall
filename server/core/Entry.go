@@ -1,8 +1,8 @@
 package core
 
 import (
-	"net/http"
 	"encoding/json"
+	"net/http"
 )
 
 type Entry struct {
@@ -21,4 +21,3 @@ func (e *Entry) Get(key string, defaultValue interface{}) interface{} {
 		return defaultValue
 	}
 }
-

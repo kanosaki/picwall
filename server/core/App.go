@@ -13,9 +13,8 @@ func NewApp(config *Config) *App {
 	return &App{
 		center: &Center{},
 		WebSocketUpgrader: websocket.Upgrader{
-			ReadBufferSize: 1024,
+			ReadBufferSize:  1024,
 			WriteBufferSize: 1024,
 		},
 	}
 }
-

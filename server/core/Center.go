@@ -2,8 +2,8 @@ package core
 
 import (
 	"fmt"
-	"time"
 	"sync"
+	"time"
 )
 
 type Space interface {
@@ -65,4 +65,3 @@ func (c *Center) Shutdown(timeout time.Duration) {
 		fmt.Println("Shutdown timeout")
 	}
 }
-

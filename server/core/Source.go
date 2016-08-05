@@ -9,5 +9,3 @@ type Source interface {
 	Drain(count int)
 	Shutdown()
 }
-
-

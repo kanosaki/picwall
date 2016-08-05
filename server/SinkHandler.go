@@ -1,14 +1,14 @@
 package server
 
 import (
-	"github.com/kanosaki/picwall/model"
-	"github.com/gorilla/websocket"
+	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/gorilla/websocket"
+	"github.com/k0kubun/pp"
+	"github.com/kanosaki/picwall/model"
 	"io/ioutil"
 	"os"
 	"strings"
-	"fmt"
-	"github.com/k0kubun/pp"
 )
 
 type SinkRequest struct {
@@ -17,7 +17,7 @@ type SinkRequest struct {
 }
 
 type SinkResponse struct {
-	ReqId    int `json:"reqId"`
+	ReqId    int             `json:"reqId"`
 	Contents []model.PicItem `json:"contents"`
 }
 
@@ -39,7 +39,7 @@ func SinkHandler(app *App) gin.HandlerFunc {
 			fName := f.Name()
 			if strings.HasSuffix(fName, ".png") || strings.HasSuffix(fName, ".jpg") {
 				retItems = append(retItems, model.PicItem{
-					Caption: fName,
+					Caption:      fName,
 					ThumbnailURL: fmt.Sprintf("/dev/image/%s", fName),
 				})
 			}
@@ -57,7 +57,7 @@ func SinkHandler(app *App) gin.HandlerFunc {
 				endCursor = len(retItems) - 1
 			}
 			ret := SinkResponse{
-				ReqId: req.ReqId,
+				ReqId:    req.ReqId,
 				Contents: retItems[cursor:endCursor],
 			}
 			err = conn.WriteJSON(ret)
