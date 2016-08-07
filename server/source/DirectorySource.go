@@ -9,14 +9,14 @@ import (
 
 type DirectorySrouce struct {
 	path   string
-	ch     core.Stream
+	ch     chan *core.Entry
 	buffer *list.List // FileInfo
 }
 
 func NewDirectorySource(path string) (*DirectorySrouce, error) {
 	ds := &DirectorySrouce{
 		path:   path,
-		ch:     make(core.Stream),
+		ch:     make(chan *core.Entry),
 		buffer: list.New(),
 	}
 	files, err := ioutil.ReadDir(path)
@@ -33,9 +33,10 @@ func NewDirectorySource(path string) (*DirectorySrouce, error) {
 }
 
 func (ds *DirectorySrouce) Drain(count int) {
-	doneCount := 0
-	for doneCount < count || ds.buffer.Len() != 0 {
-		fInfo := ds.buffer.Remove(ds.buffer.Front())
-		doneCount += 1
-	}
+	panic("nie")
+	//doneCount := 0
+	//for doneCount < count || ds.buffer.Len() != 0 {
+	//	fInfo := ds.buffer.Remove(ds.buffer.Front())
+	//	doneCount += 1
+	//}
 }

@@ -28,13 +28,11 @@ func (c *Center) NewSession(name string) (*Session, error) {
 }
 
 func (c *Center) Get(key string) (Source, bool) {
-	return c.nodes[key]
+	src, ok := c.nodes[key]
+	return src, ok
 }
 
 func (c *Center) SetGlobalNode(key string, v Source) {
-	if v == c {
-		panic("Cannot set Center as its own node")
-	}
 	c.nodes[key] = v
 }
 
@@ -53,13 +51,13 @@ func (c *Center) Shutdown(timeout time.Duration) {
 			wg.Done()
 		}()
 	}
-	c := make(chan struct{})
+	cancel := make(chan struct{})
 	go func() {
 		wg.Wait()
-		c <- struct{}{}
+		cancel <- struct{}{}
 	}()
 	select {
-	case <-c:
+	case <-cancel:
 		fmt.Println("Successfully shutdown")
 	case <-time.After(timeout):
 		fmt.Println("Shutdown timeout")

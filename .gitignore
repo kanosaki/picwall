@@ -5,6 +5,8 @@
 dist/*
 !dist/.gitkeep
 
+conf/default.yaml
+
 # golang binary
 picwall
 

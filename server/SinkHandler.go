@@ -3,9 +3,9 @@ package server
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/gorilla/websocket"
 	"github.com/k0kubun/pp"
 	"github.com/kanosaki/picwall/model"
+	"github.com/kanosaki/picwall/server/core"
 	"io/ioutil"
 	"os"
 	"strings"
@@ -21,18 +21,18 @@ type SinkResponse struct {
 	Contents []model.PicItem `json:"contents"`
 }
 
-func SinkHandler(app *App) gin.HandlerFunc {
+func SinkHandler(app *core.App) gin.HandlerFunc {
 	wsUpgrader := app.WebSocketUpgrader
 	return func(c *gin.Context) {
 		conn, err := wsUpgrader.Upgrade(c.Writer, c.Request, c.Writer.Header())
 		if err != nil {
-			c.Error(err)
+			c.Error(err, nil)
 			return
 		}
 		devImagesDir := os.ExpandEnv("$IMAGES_DIR")
 		files, err := ioutil.ReadDir(devImagesDir)
 		if err != nil {
-			c.Error(err)
+			c.Error(err, nil)
 		}
 		retItems := make([]model.PicItem, 0, len(files))
 		for _, f := range files {
